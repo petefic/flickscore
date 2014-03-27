@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from movies import searchMovie
  
 app = Flask(__name__)      
  
@@ -9,7 +10,8 @@ def home():
 @app.route('/search', methods= ['POST'])
 def search():
 	title = request.form['searchbar']
-	return render_template('search.html', title=title)
+	movies = searchMovie(title)
+	return render_template('search.html', movies=movies)
  
 @app.route('/movieinfo')
 def movieInfo():
