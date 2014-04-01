@@ -16,8 +16,10 @@ def search():
     return render_template('search.html', movies=movies)
  
 @app.route('/movieinfo')
-def movieInfo():
-    return render_template('movieinfo.html')
+def movieInfo(movie):
+
+    
+    return render_template('movieinfo.html', movie=movie)
 
 def searchMovie(movieName):
     
@@ -37,3 +39,4 @@ def searchMovie(movieName):
 
 if __name__ == '__main__':
     app.run(debug=True)
+

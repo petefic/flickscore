@@ -4,7 +4,7 @@
 <h2 class="text-center">Search Results</h2>
 <hr>
 {% for movie in movies %}
-<h3>{{movie.Title}} ({{movie.Year}})</h3>
+<a href="#" class="btn btn-default btn-lg btn-block" role="button">{{movie.Title}} ({{movie.Year}})</a>
 {% endfor %}
 
 {% endblock %}
