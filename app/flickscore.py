@@ -1,6 +1,5 @@
 import urllib2
 import json
-import numpy
 from flask import Flask, render_template, request
  
 app = Flask(__name__)      
@@ -15,10 +14,10 @@ def search():
     movies = searchMovie(title)
     return render_template('search.html', movies=movies)
  
-@app.route('/movieinfo')
-def movieInfo(movie):
-
-    
+@app.route('/movieinfo', methods= ['POST'])
+def movieInfo():
+    imdbID = request.form['imdb']
+    movie = getMovieInfo(imdbID)
     return render_template('movieinfo.html', movie=movie)
 
 def searchMovie(movieName):
@@ -37,6 +36,16 @@ def searchMovie(movieName):
         
     return movies
 
+def getMovieInfo(imdbID):
+
+    URL = "http://www.omdbapi.com/?i="
+    movie = json.load(urllib2.urlopen(URL+str(imdbID)))
+    return movie
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
-

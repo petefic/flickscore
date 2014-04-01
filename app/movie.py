@@ -35,7 +35,8 @@ selection = movies[int(i)-1].copy()
 title = selection["Title"]
 title = title.replace(" ", "%20")
 year = selection["Year"]
-movie = json.load(urllib2.urlopen(URL+"t="+title+"&y="+year+"&tomatoes=true"))
+imdb = selection["imdbID"]
+movie = json.load(urllib2.urlopen(URL+"i="+imdb+"&tomatoes=true"))
 
 #Add all the scores to a list
 scores = []
