@@ -18,7 +18,8 @@ def search():
 def movieInfo():
     imdbID = request.form['imdb']
     movie = getMovieInfo(imdbID)
-    return render_template('movieinfo.html', movie=movie)
+    score = calcScore(movie)
+    return render_template('movieinfo.html', movie=movie, score=score)
 
 def searchMovie(movieName):
     
@@ -42,7 +43,9 @@ def getMovieInfo(imdbID):
     movie = json.load(urllib2.urlopen(URL+str(imdbID)+"&tomatoes=true"))
     return movie
 
-
+def calcScore(movie):
+    score=0
+    return score
 
 
 
