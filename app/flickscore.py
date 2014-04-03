@@ -39,7 +39,7 @@ def searchMovie(movieName):
 def getMovieInfo(imdbID):
 
     URL = "http://www.omdbapi.com/?i="
-    movie = json.load(urllib2.urlopen(URL+str(imdbID)))
+    movie = json.load(urllib2.urlopen(URL+str(imdbID)+"&tomatoes=true"))
     return movie
 
 
