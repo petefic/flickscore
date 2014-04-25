@@ -1,5 +1,6 @@
 import urllib2
 import json
+import numpy
 from flask import Flask, render_template, request
  
 app = Flask(__name__)      
@@ -22,7 +23,6 @@ def movieInfo():
     return render_template('movieinfo.html', movie=movie, score=score)
 
 def searchMovie(movieName):
-    
     URL = "http://www.omdbapi.com/?s="    
     movieName = movieName.replace(" ", "%20")
     searchResults = json.load(urllib2.urlopen(URL+movieName))
@@ -38,14 +38,38 @@ def searchMovie(movieName):
     return movies
 
 def getMovieInfo(imdbID):
-
     URL = "http://www.omdbapi.com/?i="
     movie = json.load(urllib2.urlopen(URL+str(imdbID)+"&tomatoes=true"))
     return movie
 
 def calcScore(movie):
-    score=0
-    return score
+    scores = []
+    try:
+        scores.append(float(movie["Metascore"]))
+    except:
+        pass
+    try:
+        scores.append(float(movie["imdbRating"]) * 10)
+    except:
+        pass
+    try:
+        scores.append(float(movie["tomatoMeter"]))
+    except:
+        pass
+    try:
+        scores.append(float(movie["tomatoRating"]) * 10)
+    except:
+        pass
+    try:
+        scores.append(float(movie["tomatoUserMeter"]))
+    except:
+        pass
+    try:
+        scores.append(float(movie["tomatoUserRating"]) * 20)
+    except:
+        pass
+
+    return int(round(numpy.mean(scores)))
 
 
 
