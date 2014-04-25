@@ -2,9 +2,9 @@ import urllib2
 import json
 import numpy
 from flask import Flask, render_template, request
- 
+
 app = Flask(__name__)      
- 
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -14,7 +14,7 @@ def search():
     title = request.form['searchbar']
     movies = searchMovie(title)
     return render_template('search.html', movies=movies)
- 
+
 @app.route('/movieinfo', methods= ['POST'])
 def movieInfo():
     imdbID = request.form['imdb']
@@ -26,7 +26,7 @@ def searchMovie(movieName):
     URL = "http://www.omdbapi.com/?s="    
     movieName = movieName.replace(" ", "%20")
     searchResults = json.load(urllib2.urlopen(URL+movieName))
-        
+
     movies = []    
     try:
         for i in searchResults["Search"]:
@@ -34,7 +34,7 @@ def searchMovie(movieName):
                 movies.append(i.copy())
     except KeyError:
         return None
-        
+
     return movies
 
 def getMovieInfo(imdbID):
@@ -70,9 +70,6 @@ def calcScore(movie):
         pass
 
     return int(round(numpy.mean(scores)))
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
