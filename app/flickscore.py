@@ -13,7 +13,11 @@ def home():
 def search():
     title = request.form['searchbar']
     movies = searchMovie(title)
-    return render_template('search.html', movies=movies)
+    if movies != None:
+        return render_template('search.html', movies=movies)
+    else:
+        msg=""
+        return render_template('error.html', msg="No titles were found, please search again")
 
 @app.route('/movieinfo', methods= ['POST'])
 def movieInfo():
