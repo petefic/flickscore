@@ -26,6 +26,10 @@ def movieInfo():
     score = calcScore(movie)
     return render_template('movieinfo.html', movie=movie, score=score)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('error.html', msg="404, Page not found"), 404
+
 def searchMovie(movieName):
     URL = "http://www.omdbapi.com/?s="    
     movieName = movieName.replace(" ", "%20")
