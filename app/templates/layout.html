@@ -19,25 +19,25 @@
   <body>
 
     <div class="container">
+      <header>
+        <h1 class="text-center"><a href="{{ url_for('home') }}">FlickScore</a></h1>
 
-      <h1 class="text-center"><a href="{{ url_for('home') }}">FlickScore</a></h1>
-
-      <!-- Search Bar -->
-      <div class="row text-center">
-        <div class="col-md-6 col-md-offset-3">
-          <form role="form" method="post" action="/search">
-            <div class="input-group">
-              <input type="text" class="form-control" name="searchbar" placeholder="Search for a movie...">
-              <span class="input-group-btn">
-                <button class="btn btn-primary" type="submit">Go!</button>
-              </span>
-            </div><!-- /input-group -->
-          </form>
-        </div><!-- /.col-md-6 -->
-      </div><!-- /.row -->
+        <!-- Search Bar -->
+        <div class="row text-center">
+          <div class="col-md-6 col-md-offset-3">
+            <form role="form" method="post" action="/search">
+              <div class="input-group">
+                <input type="text" class="form-control" name="searchbar" placeholder="Search for a movie...">
+                <span class="input-group-btn">
+                  <button class="btn btn-primary" type="submit">Go!</button>
+                </span>
+              </div><!-- /input-group -->
+            </form>
+          </div><!-- /.col-md-6 -->
+        </div><!-- /.row -->
+      </header>
 
       <div class="row">&nbsp;</div>
-
       
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -48,19 +48,20 @@
         </div><!-- /.col-md-8 -->
       </div><!-- /.row -->
 
+      <footer>
+        <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+          <div class="container">
+            <ul class="nav navbar-nav">
+              <li><p class="navbar-text">Copyright &copy;2014</p></li>
+            </ul> 
+            <ul class="nav navbar-nav navbar-right">
+              <li><p class="navbar-text">Created by <a href="http://twitter.com/petefic/">@petefic</a></p></li>
+            </ul>       
+          </div>
+        </nav>
+      </footer>
+
     </div><!-- /.container -->
-
-    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-      <div class="container">
-        <ul class="nav navbar-nav">
-          <li><p class="navbar-text">Copyright &copy;2014</p></li>
-        </ul> 
-
-        <ul class="nav navbar-nav navbar-right">
-          <li><p class="navbar-text">Created by <a href="http://twitter.com/petefic/">@petefic</a></p></li>
-        </ul>       
-      </div>
-    </nav>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

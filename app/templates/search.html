@@ -1,14 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
-
-<h2 class="text-center">Search Results</h2>
-<hr>
-<div class="btn-group-justified">
-{% for movie in movies %}
-<form role="form" method="post" action="/movieinfo">
-	<input type="hidden" name="imdb" value="{{movie.imdbID}}">
-	<button class="btn btn-default btn-lg btn-block" role="button" type="submit">{{movie.Title}} ({{movie.Year}})</button>
-</form>
-{% endfor %}
-</div>
+	<h2 class="text-center">Search Results</h2>
+	<hr>
+	<div class="btn-group-justified">
+		{% for movie in movies %}
+			<form role="form" method="post" action="/movieinfo">
+				<input type="hidden" name="imdb" value="{{movie.imdbID}}">
+				<button class="btn btn-default btn-lg btn-block" role="button" type="submit">{{movie.Title}} ({{movie.Year}})</button>
+			</form>
+		{% endfor %}
+	</div>
 {% endblock %}
