@@ -1,21 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
 	<h2 class="text-center"><strong>{{movie.Title}} ({{movie.Year}})</strong></h2>
+	<hr>
 	<div class="row">
 		<div class="col-md-4">
 			<img src="{{movie.Poster}}" height="100%" width="100%">
 		</div>
 		<div class="col-md-4">
 			<ul class="list-unstyled">
-				<li><h3>Flickscore: {{score}}</h3></li>
+				<li><h3>Flickscore: <span class="label label-primary">{{score}}</span></h3></li>
 				<li><br></li>
-				<li><h5>Metascore: {{movie.Metascore}}</h5></li>
-				<li><h5>IMDB Rating: {{movie.imdbRating}}</h5></li>
-				<li><h5>RT Tomatometer: {{movie.tomatoMeter}}%</h5></li>
-				<li><h5>RT Avg Rating: {{movie.tomatoRating}}/10</h5></li>
-				<li><h5>User Tomatometer: {{movie.tomatoUserMeter}}%</h5></li>
-				<li><h5>User Avg Rating: {{movie.tomatoUserRating}}/5</h5></li>
+				<li><h5>Metascore: <span class="label label-default">{{movie.Metascore}}</span></h5></li>
+				<li><h5>IMDB Rating: <span class="label label-default">{{movie.imdbRating}}</span></h5></li>
+				<li><h5>RT Tomatometer: <span class="label label-default">{{movie.tomatoMeter}}%</span></h5></li>
+				<li><h5>RT Avg Rating: <span class="label label-default">{{movie.tomatoRating}} / 10</span></h5></li>
+				<li><h5>User Tomatometer: <span class="label label-default">{{movie.tomatoUserMeter}}%</span></h5></li>
+				<li><h5>User Avg Rating: <span class="label label-default">{{movie.tomatoUserRating}} / 5</span></h5></li>
 			</ul>
 		</div>
 	</div>
-{% endblock %} 	
+{% endblock %}
