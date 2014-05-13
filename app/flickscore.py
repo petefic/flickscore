@@ -80,4 +80,5 @@ def calcScore(movie):
     return int(round(numpy.mean(scores)))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.debug = True
+    app.run(host='0.0.0.0')
