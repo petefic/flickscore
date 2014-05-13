@@ -1,28 +1,58 @@
 {% extends "layout.html" %}
 {% block content %}
-	<h2 class="text-center"><strong>{{movie.Title}} ({{movie.Year}})</strong></h2>
-	<hr>
+	<div class="row text-center">
+		<div class="col-md-12">
+			<h2><strong>{{movie.Title}} ({{movie.Year}})</strong></h2>
+			<hr>
+		</div>
+	</div>
+	
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-5">
+			<br>
 			<img src="{{movie.Poster}}" height="100%" width="100%">
 		</div>
-		<div class="col-md-4">
-			<ul class="list-unstyled">
+		<div class="col-md-7 text-center">
 				{% if score > 70 %}
-					<li><h3>Flickscore: <span class="label label-success">{{score}}</span></h3></li>
+					<h3>Flickscore: <span class="label label-success">{{score}}</span></h3>
 				{% elif score < 50 %}
-					<li><h3>Flickscore: <span class="label label-danger">{{score}}</span></h3></li>
+					<h3>Flickscore: <span class="label label-danger">{{score}}</span></h3>
 				{% else %}
-					<li><h3>Flickscore: <span class="label label-warning">{{score}}</span></h3></li>
+					<h3>Flickscore: <span class="label label-warning">{{score}}</span></h3>
 				{% endif %}
-				<li><br></li>
-				<li><h5>Metascore: <span class="label label-default">{{movie.Metascore}}</span></h5></li>
-				<li><h5>IMDB Rating: <span class="label label-default">{{movie.imdbRating}}</span></h5></li>
-				<li><h5>RT Tomatometer: <span class="label label-default">{{movie.tomatoMeter}}%</span></h5></li>
-				<li><h5>RT Avg Rating: <span class="label label-default">{{movie.tomatoRating}} / 10</span></h5></li>
-				<li><h5>User Tomatometer: <span class="label label-default">{{movie.tomatoUserMeter}}%</span></h5></li>
-				<li><h5>User Avg Rating: <span class="label label-default">{{movie.tomatoUserRating}} / 5</span></h5></li>
-			</ul>
+
+				<table class="table">
+					<tr>
+						<td><img src="/static/images/meta.png" height="35px" width="35px"></td>
+						<td><h4>Metascore: </h4></td>
+						<td><h4><span class="label label-default">{{movie.Metascore}}</span></h4></td>
+					</tr>
+					<tr>
+						<td><img src="/static/images/imdb.png" height="35px" width="35px"></td>
+						<td><h4>IMDB Rating: </h4></td>
+						<td><h4><span class="label label-default">{{movie.imdbRating}}</span></h4></td>
+					</tr>
+					<tr>
+						<td><img src="/static/images/rt.png" height="35px" width="35px"></td>
+						<td><h4>RT Tomatometer: </h4></td>
+						<td><h4><span class="label label-default">{{movie.tomatoMeter}}%</span></h4></td>
+					</tr>
+					<tr>
+						<td><img src="/static/images/rt.png" height="35px" width="35px"></td>
+						<td><h4>RT Avg Rating: </h4></td>
+						<td><h4><span class="label label-default">{{movie.tomatoRating}} / 10</span></h4></td>
+					</tr>
+					<tr>
+						<td><img src="/static/images/rt.png" height="35px" width="35px"></td>
+						<td><h4>User Tomatometer: </h4></td>
+						<td><h4><span class="label label-default">{{movie.tomatoUserMeter}}%</span></h4></td>
+					</tr>
+					<tr>
+						<td><img src="/static/images/rt.png" height="35px" width="35px"></td>
+						<td><h4>User Avg Rating: </h4></td>
+						<td><h4><span class="label label-default">{{movie.tomatoUserRating}} / 5</span></h4></td>
+					</tr>
+				</table>
 		</div>
 	</div>
 {% endblock %}
