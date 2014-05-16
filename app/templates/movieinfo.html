@@ -6,53 +6,107 @@
 			<hr>
 		</div>
 	</div>
-	
+
 	<div class="row">
 		<div class="col-md-5">
 			<br>
 			<img src="{{movie.Poster}}" height="100%" width="100%">
 		</div>
 		<div class="col-md-7 text-center">
-				{% if score > 75 %}
-					<h3>Flickscore: <span class="label label-success">{{score}}</span></h3>
-				{% elif score < 50 %}
-					<h3>Flickscore: <span class="label label-danger">{{score}}</span></h3>
-				{% else %}
-					<h3>Flickscore: <span class="label label-warning">{{score}}</span></h3>
-				{% endif %}
+			{% if score >= 75 %}
+				<h3>Flickscore: <span class="label label-success">{{score}}</span></h3>
+			{% elif score < 50 %}
+				<h3>Flickscore: <span class="label label-danger">{{score}}</span></h3>
+			{% else %}
+				<h3>Flickscore: <span class="label label-warning">{{score}}</span></h3>
+			{% endif %}
 
-				<table class="table">
-					<tr>
-						<td><img src="/static/images/meta.png" height="40px" width="40px"></td>
-						<td><h4>Metascore: </h4></td>
-						<td><h4><span class="label label-default">{{movie.Metascore}}</span></h4></td>
-					</tr>
-					<tr>
-						<td><img src="/static/images/imdb.png" height="35px" width="35px"></td>
-						<td><h4>IMDB Rating: </h4></td>
-						<td><h4><span class="label label-default">{{movie.imdbRating}}</span></h4></td>
-					</tr>
-					<tr>
-						<td><img src="/static/images/rt.png" height="30px" width="30px"></td>
-						<td><h4>RT Tomatometer: </h4></td>
-						<td><h4><span class="label label-default">{{movie.tomatoMeter}}%</span></h4></td>
-					</tr>
-					<tr>
-						<td><img src="/static/images/rt.png" height="30px" width="30px"></td>
-						<td><h4>RT Avg Rating: </h4></td>
-						<td><h4><span class="label label-default">{{movie.tomatoRating}} / 10</span></h4></td>
-					</tr>
-					<tr>
-						<td><img src="/static/images/rt.png" height="30px" width="30px"></td>
-						<td><h4>User Tomatometer: </h4></td>
-						<td><h4><span class="label label-default">{{movie.tomatoUserMeter}}%</span></h4></td>
-					</tr>
-					<tr>
-						<td><img src="/static/images/rt.png" height="30px" width="30px"></td>
-						<td><h4>User Avg Rating: </h4></td>
-						<td><h4><span class="label label-default">{{movie.tomatoUserRating}} / 5</span></h4></td>
-					</tr>
-				</table>
+			<table class="table">
+				<tr>
+					<td><img src="/static/images/meta.png" height="40px" width="40px"></td>
+					<td><h4>Metascore: </h4></td>
+					<script type="text/javascript">
+						var meta = {{movie.Metascore}} * 1;
+						if (meta >= 75) {
+							document.write('<td><h4><span class="label label-success">{{movie.Metascore}}</span></h4></td>');
+						} else if (meta < 50) {
+							document.write('<td><h4><span class="label label-danger">{{movie.Metascore}}</span></h4></td>');
+						} else {
+							document.write('<td><h4><span class="label label-warning">{{movie.Metascore}}</span></h4></td>');
+						}
+					</script>
+				</tr>
+				<tr>
+					<td><img src="/static/images/imdb.png" height="35px" width="35px"></td>
+					<td><h4>IMDB Rating: </h4></td>
+					<script type="text/javascript">
+						var imdb = {{movie.imdbRating}} * 1.0;
+						if (imdb >= 7.5) {
+							document.write('<td><h4><span class="label label-success">{{movie.imdbRating}}</span></h4></td>');
+						} else if (imdb < 5.0) {
+							document.write('<td><h4><span class="label label-danger">{{movie.imdbRating}}</span></h4></td>');
+						} else {
+							document.write('<td><h4><span class="label label-warning">{{movie.imdbRating}}</span></h4></td>');
+						}
+					</script>
+				</tr>
+				<tr>
+					<td><img src="/static/images/rt.png" height="30px" width="30px"></td>
+					<td><h4>RT Tomatometer: </h4></td>
+					<script type="text/javascript">
+						var rtMeter = {{movie.tomatoMeter}} * 1;
+						if (rtMeter >= 75) {
+							document.write('<td><h4><span class="label label-success">{{movie.tomatoMeter}}%</span></h4></td>');
+						} else if (rtMeter < 50) {
+							document.write('<td><h4><span class="label label-danger">{{movie.tomatoMeter}}%</span></h4></td>');
+						} else {
+							document.write('<td><h4><span class="label label-warning">{{movie.tomatoMeter}}%</span></h4></td>');
+						}
+					</script>
+				</tr>
+				<tr>
+					<td><img src="/static/images/rt.png" height="30px" width="30px"></td>
+					<td><h4>RT Avg Rating: </h4></td>
+					<script type="text/javascript">
+						var rtRating = {{movie.tomatoRating}} * 1.0;
+						if (rtRating >= 7.5) {
+							document.write('<td><h4><span class="label label-success">{{movie.tomatoRating}} / 10</span></h4></td>');
+						} else if (rtRating < 5.0) {
+							document.write('<td><h4><span class="label label-danger">{{movie.tomatoRating}} / 10</span></h4></td>');
+						} else {
+							document.write('<td><h4><span class="label label-warning">{{movie.tomatoRating}} / 10</span></h4></td>');
+						}
+					</script>
+				</tr>
+				<tr>
+					<td><img src="/static/images/rt.png" height="30px" width="30px"></td>
+					<td><h4>User Tomatometer: </h4></td>
+					<script type="text/javascript">
+						var userMeter = {{movie.tomatoUserMeter}} * 1;
+						if (userMeter >= 75) {
+							document.write('<td><h4><span class="label label-success">{{movie.tomatoUserMeter}}%</span></h4></td>');
+						} else if (userMeter < 50) {
+							document.write('<td><h4><span class="label label-danger">{{movie.tomatoUserMeter}}%</span></h4></td>');
+						} else {
+							document.write('<td><h4><span class="label label-warning">{{movie.tomatoUserMeter}}%</span></h4></td>');
+						}
+					</script>
+				</tr>
+				<tr>
+					<td><img src="/static/images/rt.png" height="30px" width="30px"></td>
+					<td><h4>User Avg Rating: </h4></td>
+					<script type="text/javascript">
+						var UserRating = {{movie.tomatoUserRating}} * 1.0;
+						if (UserRating >= 3.75) {
+							document.write('<td><h4><span class="label label-success">{{movie.tomatoUserRating}} / 5</span></h4></td>');
+						} else if (UserRating < 2.5) {
+							document.write('<td><h4><span class="label label-danger">{{movie.tomatoUserRating}} / 5</span></h4></td>');
+						} else {
+							document.write('<td><h4><span class="label label-warning">{{movie.tomatoUserRating}} / 5</span></h4></td>');
+						}
+					</script>
+				</tr>
+			</table>
 		</div>
 	</div>
 {% endblock %}
