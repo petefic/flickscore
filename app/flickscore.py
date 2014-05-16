@@ -55,27 +55,27 @@ def calcScore(movie):
     try:
         scores.append(float(movie["Metascore"]))
     except:
-        pass
+        movie["Metascore"] = 999
     try:
         scores.append(float(movie["imdbRating"]) * 10)
     except:
-        pass
+        movie["imdbRating"] = 999
     try:
         scores.append(float(movie["tomatoMeter"]))
     except:
-        pass
+        movie["tomatoMeter"] = 999
     try:
         scores.append(float(movie["tomatoRating"]) * 10)
     except:
-        pass
+        movie["tomatoRating"] = 999
     try:
         scores.append(float(movie["tomatoUserMeter"]))
     except:
-        pass
+        movie["tomatoUserMeter"] = 999
     try:
         scores.append(float(movie["tomatoUserRating"]) * 20)
     except:
-        pass
+        movie["tomatoUserRating"] = 999
 
     return int(round(numpy.mean(scores)))
 
