@@ -55,7 +55,7 @@ def calcScore(movie):
     try:
         scores.append(float(movie["Metascore"]))
     except:
-        pass
+        movie["Metascore"] = 999
     try:
         scores.append(float(movie["imdbRating"]) * 10)
     except:
