@@ -9,9 +9,9 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/search', methods= ['POST'])
+@app.route('/search', methods= ['GET'])
 def search():
-    title = request.form['searchbar']
+    title = request.args.get('title','')
     movies = searchMovie(title)
     if movies != None:
         return render_template('search.html', movies=movies)
@@ -19,9 +19,9 @@ def search():
         msg=""
         return render_template('error.html', msg="No titles were found, please search again")
 
-@app.route('/movieinfo', methods= ['POST'])
+@app.route('/movie', methods= ['GET'])
 def movieInfo():
-    imdbID = request.form['imdb']
+    imdbID = request.args.get('id','')
     movie = getMovieInfo(imdbID)
     score = calcScore(movie)
     return render_template('movieinfo.html', movie=movie, score=score)
